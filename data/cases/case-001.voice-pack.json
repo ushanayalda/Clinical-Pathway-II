@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-001",
+  "voice_pack_status": "draft_hold",
+  "audio_generation_status": "HOLD",
+  "listen_test_status": "HOLD",
+  "audio_release_status": "HOLD",
+  "patient_voice_profile": {
+    "patient_name": "David Nguyen",
+    "age": 58,
+    "tone": "worried, minimising at first, gradually accepts seriousness",
+    "accent": "neutral Australian unless reviewed otherwise",
+    "style": "natural, short answers, low-distraction",
+    "emotion_arc": [
+      "minimising",
+      "worried",
+      "resistant about ambulance",
+      "cooperative"
+    ]
+  },
+  "rules": [
+    "Patient-spoken lines only.",
+    "No examiner narration.",
+    "No teaching content.",
+    "No diagnosis leak before station finish.",
+    "Audio generation remains HOLD.",
+    "Listen test required before release."
+  ],
+  "lines": [
+    {
+      "filename": "case001_patient_001_opening",
+      "trigger": "station_start",
+      "spoken_text": "Doctor, I think it is just indigestion, but my chest feels really tight.",
+      "voice_direction": "worried but minimising"
+    },
+    {
+      "filename": "case001_patient_002_onset",
+      "trigger": "pain_story_onset",
+      "spoken_text": "It started about 45 minutes ago.",
+      "voice_direction": "plain, uncomfortable"
+    },
+    {
+      "filename": "case001_patient_003_trigger",
+      "trigger": "pain_story_trigger",
+      "spoken_text": "I was carrying boxes.",
+      "voice_direction": "matter-of-fact"
+    },
+    {
+      "filename": "case001_patient_004_location",
+      "trigger": "pain_story_location",
+      "spoken_text": "It is in the middle of my chest.",
+      "voice_direction": "uncomfortable"
+    },
+    {
+      "filename": "case001_patient_005_character",
+      "trigger": "pain_story_character",
+      "spoken_text": "It feels heavy and tight.",
+      "voice_direction": "uncomfortable"
+    },
+    {
+      "filename": "case001_patient_006_severity",
+      "trigger": "pain_story_severity",
+      "spoken_text": "It is about eight out of ten.",
+      "voice_direction": "concerned"
+    },
+    {
+      "filename": "case001_patient_007_radiation",
+      "trigger": "pain_story_radiation",
+      "spoken_text": "It goes to my left arm and jaw.",
+      "voice_direction": "concerned"
+    },
+    {
+      "filename": "case001_patient_008_associated",
+      "trigger": "associated_symptoms",
+      "spoken_text": "I feel sweaty, sick in the stomach, and a bit short of breath.",
+      "voice_direction": "worried"
+    },
+    {
+      "filename": "case001_patient_009_antacid",
+      "trigger": "pain_story_antacid",
+      "spoken_text": "I took an antacid, but it did not settle.",
+      "voice_direction": "surprised"
+    },
+    {
+      "filename": "case001_patient_010_ambulance",
+      "trigger": "response_to_plan_ambulance",
+      "spoken_text": "An ambulance? Is it that serious?",
+      "voice_direction": "worried, mildly resistant"
+    },
+    {
+      "filename": "case001_patient_011_drive",
+      "trigger": "response_to_plan_drive",
+      "spoken_text": "Can I just drive myself?",
+      "voice_direction": "resistant but not aggressive"
+    },
+    {
+      "filename": "case001_patient_012_work",
+      "trigger": "response_to_plan_work",
+      "spoken_text": "I have an important work meeting.",
+      "voice_direction": "concerned about disruption"
+    },
+    {
+      "filename": "case001_patient_013_acceptance",
+      "trigger": "response_to_plan_acceptance",
+      "spoken_text": "Okay. Please tell my wife.",
+      "voice_direction": "accepting, still worried"
+    }
+  ]
+}

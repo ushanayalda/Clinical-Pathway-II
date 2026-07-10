@@ -1,0 +1,359 @@
+{
+  "pack_version": "2.2-website-audit-upgrade",
+  "case_id": "CASE-001",
+  "status": "prototype",
+  "title": "Chest discomfort after lunch",
+  "tier": "Critical Emergency Dominance",
+  "pattern": "Chest pain",
+  "station_contract": "Urgent general practice consultation",
+  "learner_confidence_target": "I can act safely before I know everything.",
+  "visible_station_card": {
+    "setting": "General practice clinic",
+    "patient_name": "David Nguyen",
+    "patient_age": 58,
+    "candidate_information": "You are the doctor in a general practice clinic. David Nguyen, 58 years old, has booked an urgent same-day appointment because of chest discomfort after lunch.",
+    "tasks": [
+      "Take a focused history.",
+      "Assess immediate risk.",
+      "Explain your concern.",
+      "Outline your immediate management plan."
+    ]
+  },
+  "reading_time": {
+    "duration_seconds": 120,
+    "prompts": [
+      "What serious cause must stay on my radar?",
+      "Which details would make this unsafe to manage routinely?",
+      "At what point must assessment become urgent action?"
+    ]
+  },
+  "guided_run": {
+    "label": "Guided real run",
+    "description": "A realistic consultation with a short safe reasoning guide beside each clinical turn.",
+    "duration_seconds": 480,
+    "interaction_rule": "One clinical beat. One spoken response. One continue action.",
+    "beats": [
+      {
+        "id": "opening",
+        "title": "Open and test the label",
+        "cue": {
+          "speaker": "David Nguyen",
+          "type": "patient",
+          "text": "Doctor, I think it is just indigestion, but my chest feels really tight."
+        },
+        "safe_reasoning_guide": [
+          "He thinks it is indigestion. That may be true.",
+          "But chest pressure can also be serious.",
+          "A heart cause is not ruled out.",
+          "First, clarify the pain pattern."
+        ],
+        "doctor_line": "David, I can see you are uncomfortable. I understand why you thought it might be indigestion. I am going to ask a few focused questions to make sure this is not something more serious.",
+        "learner_instruction": "Say the opening aloud in your own words.",
+        "primary_action": "Continue the consultation"
+      },
+      {
+        "id": "pain-pattern",
+        "title": "Clarify the pain pattern",
+        "cue": {
+          "speaker": "David Nguyen",
+          "type": "patient",
+          "text": "It started about 45 minutes ago while I was carrying boxes. It is a heavy, tight pressure in the middle of my chest, about 8 out of 10. It goes to my left arm and jaw, and it is still there. The antacid did not help."
+        },
+        "safe_reasoning_guide": [
+          "This started with effort.",
+          "It is heavy, central and spreads to the arm and jaw.",
+          "Simple indigestion is now less reassuring.",
+          "A heart problem is more concerning.",
+          "Next, check sweating, nausea, breathlessness and fainting."
+        ],
+        "doctor_line": "Did you feel sweaty or sick? Have you been short of breath, dizzy or faint?",
+        "learner_instruction": "Ask the associated symptoms aloud.",
+        "primary_action": "Continue the consultation"
+      },
+      {
+        "id": "safety-threshold",
+        "title": "Recognise the safety threshold",
+        "cue": {
+          "speaker": "David Nguyen",
+          "type": "patient",
+          "text": "I am sweaty, I feel sick in the stomach, and I am a bit short of breath. I have not fainted."
+        },
+        "safe_reasoning_guide": [
+          "Sweating, nausea and breathlessness add to the concern.",
+          "This is still not a proven diagnosis.",
+          "But it is unsafe to keep this as a routine clinic assessment.",
+          "Arrange urgent ambulance transfer now.",
+          "Keep checking him while help is coming."
+        ],
+        "doctor_line": "David, these symptoms could be coming from your heart. I am arranging an ambulance now while I continue checking you.",
+        "learner_instruction": "Explain the concern and urgent action aloud.",
+        "primary_action": "Call urgent help and continue",
+        "candidate_actions": [
+          "Ask staff to call an ambulance now.",
+          "Keep David in the clinic and stay with him.",
+          "Check observations.",
+          "Use an ECG only if it is immediately available and does not delay transfer.",
+          "Do not wait for clinic blood tests or troponin."
+        ]
+      },
+      {
+        "id": "resistance",
+        "title": "Hold the safety boundary",
+        "cue": {
+          "speaker": "David Nguyen",
+          "type": "patient",
+          "text": "An ambulance? Is it that serious? Can I just drive myself? I have an important work meeting, and I do not want to make a fuss."
+        },
+        "safe_reasoning_guide": [
+          "He does not yet understand the risk.",
+          "His wish to drive creates another safety problem.",
+          "Stay calm. Do not argue.",
+          "Explain why monitored transport matters.",
+          "Keep the boundary clear."
+        ],
+        "doctor_line": "I understand the meeting matters, but I do not want you to drive because your condition could change suddenly. The ambulance team can monitor you and start treatment if needed.",
+        "learner_instruction": "Explain why private driving is unsafe.",
+        "primary_action": "Continue while help is coming"
+      },
+      {
+        "id": "focused-assessment",
+        "title": "Assess while transfer is underway",
+        "cue": {
+          "speaker": "Examiner",
+          "type": "examiner",
+          "text": "David agrees to ambulance transfer and asks you to tell his wife. The ambulance has been called. You continue a focused assessment while waiting.",
+          "groups": [
+            {
+              "label": "Observations",
+              "items": [
+                "Pale, sweaty and uncomfortable",
+                "BP 155/92",
+                "HR 104",
+                "RR 22",
+                "SpO₂ 95% on room air",
+                "Temperature 36.8°C"
+              ]
+            },
+            {
+              "label": "Risk and medicines",
+              "items": [
+                "Smokes about 15 cigarettes daily",
+                "Hypertension and high cholesterol",
+                "Father had a heart attack",
+                "Takes blood pressure and cholesterol medicines, sometimes misses doses",
+                "No known drug allergy"
+              ]
+            },
+            {
+              "label": "Focused danger checks",
+              "items": [
+                "No tearing pain to the back or syncope",
+                "No haemoptysis, calf swelling, recent surgery, long travel or immobilisation",
+                "No focal weakness or speech trouble",
+                "No fever, cough, chest injury or wheeze",
+                "Chest examination: no wheeze or focal crackles",
+                "Cardiovascular examination: no new murmur reported"
+              ]
+            }
+          ]
+        },
+        "safe_reasoning_guide": [
+          "The urgent action is already underway.",
+          "Now gather only information that changes immediate care or handover.",
+          "Check observations, risk factors, medicines, allergies and a few other dangerous causes.",
+          "Do not let these checks delay transfer."
+        ],
+        "doctor_line": "While help is coming, I will check your observations, medical history, medicines, allergies and a few other serious causes so I can hand over safely.",
+        "learner_instruction": "Say how you will continue the focused assessment.",
+        "primary_action": "Prepare the handover",
+        "candidate_actions": [
+          "Follow the local suspected-ACS protocol.",
+          "Check aspirin allergy, active bleeding or ulcer, and relevant anticoagulant use before aspirin.",
+          "Check blood pressure and recent PDE5-inhibitor use before GTN.",
+          "Give oxygen only if he is hypoxic."
+        ]
+      },
+      {
+        "id": "handover",
+        "title": "Handover clearly",
+        "cue": {
+          "speaker": "Examiner",
+          "type": "examiner",
+          "text": "The ambulance team arrives. Give a concise clinical handover."
+        },
+        "safe_reasoning_guide": [
+          "The team needs the pattern, the main danger, what you have done and what still needs checking.",
+          "Keep the handover short and ordered.",
+          "Do not retell the whole consultation."
+        ],
+        "doctor_line": "David Nguyen is 58 with 45 minutes of central heavy chest pressure, 8 out of 10, starting with exertion and radiating to his left arm and jaw, with sweating, nausea and shortness of breath. Antacid did not help. He has smoking, hypertension, cholesterol and family-history risk. I am concerned about possible acute coronary syndrome. Ambulance transfer has been arranged and he has been advised not to drive.",
+        "learner_instruction": "Give the handover aloud, then finish the station.",
+        "primary_action": "Finish station"
+      }
+    ]
+  },
+  "blind_repeat": {
+    "label": "Blind repeat",
+    "description": "Patient and examiner cues only. The safe reasoning guide and doctor lines are hidden.",
+    "duration_seconds": 480
+  },
+  "review": {
+    "automatic_scoring": false,
+    "note": "This is self-review guidance, not an automatic score.",
+    "core_stages": [
+      {
+        "id": "safety-check",
+        "title": "How safe was my run?",
+        "purpose": "Reflect before seeing the model.",
+        "items": [
+          "I did not accept indigestion as the diagnosis.",
+          "I recognised the danger pattern after the associated symptoms.",
+          "I arranged ambulance transfer before completing the full history.",
+          "I clearly stopped private driving.",
+          "I continued only focused assessment while help was coming.",
+          "I gave a short, ordered handover."
+        ],
+        "response_options": [
+          "Yes",
+          "Not sure",
+          "Missed it"
+        ]
+      },
+      {
+        "id": "road-changed",
+        "title": "How the road changed",
+        "purpose": "See what changed, what remained uncertain and why the next safe move changed.",
+        "timeline": [
+          {
+            "moment": "Indigestion label and chest tightness",
+            "what_changed": "Nothing dangerous had been ruled out.",
+            "uncertainty": "Indigestion remained possible.",
+            "next_safe_move": "Clarify the pain pattern."
+          },
+          {
+            "moment": "Exertional, heavy pressure with arm and jaw radiation",
+            "what_changed": "A heart cause became more concerning.",
+            "uncertainty": "The diagnosis was still not proven.",
+            "next_safe_move": "Check associated danger symptoms."
+          },
+          {
+            "moment": "Sweating, nausea and breathlessness",
+            "what_changed": "The pattern became unsafe for routine clinic assessment.",
+            "uncertainty": "The exact cause remained unconfirmed.",
+            "next_safe_move": "Arrange ambulance transfer now."
+          },
+          {
+            "moment": "Patient wants to drive",
+            "what_changed": "Communication became part of immediate safety.",
+            "uncertainty": "He had not yet accepted the risk.",
+            "next_safe_move": "Explain monitored transport and hold the no-driving boundary."
+          },
+          {
+            "moment": "Transfer is underway",
+            "what_changed": "The urgent action was protected.",
+            "uncertainty": "Other causes and treatment details still needed assessment.",
+            "next_safe_move": "Gather only focused information for immediate care and handover."
+          }
+        ]
+      },
+      {
+        "id": "practise-repeat",
+        "title": "See it, practise it, repeat",
+        "purpose": "Use the full run, repair one weak part, then test yourself without prompts.",
+        "weak_drills": [
+          {
+            "id": "urgent-action",
+            "title": "Explain urgent transfer",
+            "prompt": "David says: An ambulance? I thought it was indigestion.",
+            "model": "Indigestion is possible, but your symptoms are not safe to treat that way here. The pressure, radiation, sweating, nausea and breathlessness could mean your heart is at risk. I am arranging an ambulance now so you can be monitored and treated safely."
+          },
+          {
+            "id": "no-driving",
+            "title": "Hold the no-driving boundary",
+            "prompt": "David says: Can I just drive myself? I have a meeting.",
+            "model": "I understand the meeting matters, but I do not want you to drive because your condition could change suddenly. The ambulance team can monitor you and start treatment if needed."
+          },
+          {
+            "id": "recovery",
+            "title": "Recover from the indigestion frame",
+            "prompt": "You initially framed the symptoms as reflux. Change direction safely.",
+            "model": "I first considered indigestion because this began after lunch. But the heavy pressure, arm and jaw radiation, sweating, nausea and breathlessness make a heart cause unsafe to miss. I need to change direction and arrange urgent transfer."
+          },
+          {
+            "id": "handover",
+            "title": "Give a concise handover",
+            "prompt": "The ambulance team arrives.",
+            "model": "David Nguyen is 58 with 45 minutes of central heavy chest pressure, 8 out of 10, starting with exertion and radiating to his left arm and jaw, with sweating, nausea and shortness of breath. Antacid did not help. He has smoking, hypertension, cholesterol and family-history risk. I am concerned about possible acute coronary syndrome. Ambulance transfer has been arranged and he has been advised not to drive."
+          }
+        ],
+        "what_if_paths": [
+          {
+            "question": "What if I treated it as reflux?",
+            "answer": "The danger pattern remains unexplained and the patient may deteriorate without monitoring or urgent assessment."
+          },
+          {
+            "question": "What if I waited for an ECG?",
+            "answer": "An immediate ECG can help, but it must not delay ambulance transfer when the clinical pattern is already high risk."
+          },
+          {
+            "question": "What if I waited for troponin?",
+            "answer": "Troponin is not available in the clinic, and waiting for proof delays safe transfer."
+          },
+          {
+            "question": "What if I let him drive?",
+            "answer": "Private transport is unsafe because the patient may deteriorate suddenly without monitoring or immediate treatment."
+          },
+          {
+            "question": "What if the ECG was normal?",
+            "answer": "A normal early ECG does not make ongoing high-risk symptoms safe in a general practice clinic."
+          }
+        ],
+        "examiner_criteria": {
+          "strong_run": [
+            "Recognises the high-risk pattern before certainty.",
+            "Calls an ambulance after the danger threshold is crossed.",
+            "Does not allow private transport.",
+            "Continues focused assessment while transfer is underway.",
+            "Explains risk in clear patient language.",
+            "Hands over concisely."
+          ],
+          "unsafe_run": [
+            "Reassures as reflux.",
+            "Completes a long routine history before escalating.",
+            "Waits for clinic tests or troponin.",
+            "Allows the patient to drive.",
+            "Does not call an ambulance.",
+            "Gives protocol medicines without checking contraindications."
+          ]
+        },
+        "immediate_management": [
+          "Keep David in the clinic and ask staff to assist.",
+          "Ambulance transfer comes before proof.",
+          "Check observations and obtain an ECG only if it does not delay transfer.",
+          "Do not wait for clinic troponin.",
+          "Use local suspected-ACS protocol only after contraindication checks.",
+          "Give oxygen only if hypoxic.",
+          "Do not allow private transport."
+        ]
+      }
+    ]
+  },
+  "journey_metadata": {
+    "phase": "Critical Emergency Dominance",
+    "pattern": "Chest pain",
+    "station": "Station 001",
+    "station_title": "Chest discomfort after lunch",
+    "confidence_target": "I can act safely before I know everything."
+  },
+  "governance_status": {
+    "case_status": "prototype",
+    "source_status": "HOLD",
+    "clinical_status": "HOLD",
+    "renderer_status": "HOLD",
+    "accessibility_status": "HOLD",
+    "audio_generation_status": "HOLD",
+    "audio_release_status": "HOLD",
+    "release_status": "HOLD",
+    "canonical_lock_status": "NOT_LOCKED"
+  }
+}
