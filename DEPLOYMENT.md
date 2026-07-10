@@ -6,6 +6,10 @@ The repository deploys the static Clinical Pathway prototype to GitHub Pages whe
 
 `https://ushanayalda.github.io/Clinical-Pathway-II/`
 
+## Deployment trigger
+
+A main-branch deployment was triggered on 10 July 2026 after the v2.2 site was merged.
+
 ## Scope
 
 - Case 001 only
